@@ -7,5 +7,5 @@ Terminal scripts written in python
 **quick-cd:** quickly search and change to any directory
 
 ```shell
-qcd <Optional-parents/my-dir-name> <Optional-dir-to-exclude>
+qcd <Optional-parents/my-dir-name> <Optional-dir-to-exclude-from-search>
 ```
