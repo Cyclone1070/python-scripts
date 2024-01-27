@@ -22,9 +22,9 @@ def getPaths(root):
                     if (root / whole_target).exists():
                         paths.append(root / whole_target)
                 getPaths(root / path)
-if target == str(home):
+if whole_target == home:
     print(home)
-elif target == 'Library':
+elif whole_target.name == 'Library':
     print(home / 'Library')
 else:
     getPaths(home)
@@ -45,7 +45,7 @@ function qcd() {{
     if [[ -n $result ]]; then  # Check if result is not empty
         cd $result  # Use the output to change directory
     else
-        _trash=$(cd -) # Change to the original directory, prevent printing to terminal
+        cd - > /dev/null # Change to the original directory, prevent printing to terminal
         echo "No directory found"
     fi
 }}'''
