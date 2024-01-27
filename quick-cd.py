@@ -19,9 +19,9 @@ def getPaths(root):
                     if (root / whole_target).exists():
                         paths.append(root / whole_target)
                 getPaths(root / path)
-if target == str(home):
+if whole_target == home:
     print(home)
-elif target == 'Library':
+elif whole_target.name == 'Library':
     print(home / 'Library')
 else:
     getPaths(home)
