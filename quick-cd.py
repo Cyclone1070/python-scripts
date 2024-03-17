@@ -13,7 +13,7 @@ paths = []
 def getPaths(root):
     for path in os.listdir(root):
             if os.path.isdir(root / path) == True:
-                if re.search('^\.', path) or path == 'Library' or path in excludes:
+                if re.search(r'^\.', path) or path == 'Library' or path in excludes:
                     continue
                 if path == target:
                     if (root / whole_target).exists():
