@@ -1,7 +1,7 @@
 from pathlib import Path
 
 # Files to write
-python = '''import pyinputplus as pyip
+python = """import pyinputplus as pyip
 from pathlib import Path
 import os
 import sys
@@ -16,7 +16,7 @@ paths = []
 def getPaths(root):
     for path in os.listdir(root):
             if os.path.isdir(root / path) == True:
-                if re.search(r'^\.', path) or path == 'Library' or path in excludes:
+                if re.search(r'^\\.', path) or path == 'Library' or path in excludes:
                     continue
                 if path == target:
                     if (root / whole_target).exists():
@@ -32,9 +32,9 @@ else:
         print(paths[0])
     elif len(paths) > 1:
         response = pyip.inputMenu([str(path) for path in paths], numbered=True)
-        print(response)'''
+        print(response)"""
 cwd = Path.cwd()
-zsh = f'''
+zsh = f"""
 
 # Quick-cd script, to quickly search and change to the desired directory, simply run in terminal:
 # qcd Optional-parents/my-dir-name Optional-excluded-directory
@@ -48,15 +48,12 @@ function qcd() {{
         cd - > /dev/null # Change to the original directory, prevent printing to terminal
         echo "No directory found"
     fi
-}}'''
+}}"""
 # Writing files
-py_script = open('quick-cd.py', 'w')
-py_script.write(python)
-py_script.close()
-zsh_script = open(Path.home() / '.zshrc')
-text = zsh_script.read()
-zsh_script.close()
-if text.find(zsh) == -1:
-    zsh_script = open(Path.home() / '.zshrc', 'a')
-    zsh_script.write(zsh)
-    zsh_script.close()
+with open("quick-cd.py", "w") as python_script:
+    python_script.write(python)
+with open(Path.home() / ".zshrc", "r") as zsh_script_read:
+    text = zsh_script_read.read()
+    if text.find(zsh) == -1:
+        with open(Path.home() / ".zshrc", "a") as zsh_script_append:
+            zsh_script_append.write(zsh)
